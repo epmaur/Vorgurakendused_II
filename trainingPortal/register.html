@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="form-group" id="login-form">
+      <input class="form-control" type="text" placeholder="Kasutajanimi" id="username">
+      <input class="form-control" type="password" placeholder="Parool" id="password">
+      <input class="form-control" type="password" placeholder="Kinnita parool" id="password2">
+      <div class="error" id="diff-pw-error">Paroolid peavad olema ühesugused!</div>
+      <div class="error" id="wrong-pw-error">Parool peab olema vähemalt 8 tähemärki!</div>
+      <button class="btn btn-success" id="register-btn" onclick="register()">Registreeri</button>
+    </div>
+  </body>
+</html>
