@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Logi sisse</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+  <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '2046233432294614',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.12'
+        });
+
+        FB.AppEvents.logPageView();
+        FB.getLoginStatus(function(response) {
+            console.log('muki', response);
+
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+    <div class="form-group" id="login-form">
+      <input class="form-control" type="text" placeholder="Kasutajanimi" id="username">
+      <input class="form-control" type="password" placeholder="Parool" id="password">
+      <button class="btn btn-success" id="login-btn">Logi sisse</button>
+      <fb:login-button
+              scope="public_profile,email"
+              onlogin="checkLoginState();">
+      </fb:login-button>
+    </div>
+  </body>
+</html>

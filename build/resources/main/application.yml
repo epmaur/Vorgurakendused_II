@@ -1,0 +1,25 @@
+spring:
+    datasource:
+        #url: jdbc:mysql://vorgurakendused.ckyb3qymswtp.eu-west-2.rds.amazonaws.com/vorgurakendused
+        url: jdbc:mysql://localhost:3306/vorgurakendused
+        username: jooksupoiss
+        password: jooksupoiss123
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+
+
+    http:
+        multipart:
+            max-file-size: 3MB
+            max-request-size: 20MB
+
+desktop:
+    paths:
+        uploadedFiles: C:\Users\Epu\Desktop\Tarkvaratehnika-projekt\adPortal2\pildid
+
+management:
+       port: 9002
+       security:
+            enabled: false
