@@ -3,9 +3,10 @@ package ee.ttu.vorgurakendused.training;
 import java.util.List;
 
 import ee.ttu.vorgurakendused.config.CustomUserDetails;
+import ee.ttu.vorgurakendused.users.User;
+import ee.ttu.vorgurakendused.users.UserHelper;
 import ee.ttu.vorgurakendused.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,14 +25,15 @@ public class TrainingController {
     @RequestMapping(value="/trainings/add", method=RequestMethod.POST)
     public Training addTraining(@RequestBody Training training) {
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        training.setCreater(userService.getUser(userDetails.getUsername()));
+        training.setCreator(userService.getUser(userDetails.getUsername()));
         return trainingService.addTraining(training);
     }
 
     @CrossOrigin
-    @RequestMapping(value="/trainings", method=RequestMethod.GET, produces="application/json")
-    public List<Training> getAllTrainings() {
-        List<Training> response = trainingService.getAllTrainings();
+    @RequestMapping(value="/trainings", method=RequestMethod.POST, produces="application/json")
+    public List<Training> getAllTrainings(@RequestBody UserHelper userHelper) {
+        User user = userService.getUser(userHelper.getUsername());
+        List<Training> response = trainingService.getAllTrainings(user);
         return response;
     }
 

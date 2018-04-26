@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#form-group',
+        beforeMount() {
+            if (getCookie("access_token")) {
+                document.location.replace("/");
+
+            }
+        }
+    });
+</script>
+</head>
+<body>
+<div class="form-group" id="login-form">
+    <h2>Registreeri uus kasutaja</h2>
+    <input class="form-control" type="text" placeholder="Kasutajanimi" id="username"/>
+    <input class="form-control" type="password" placeholder="Parool" id="password"/>
+    <input class="form-control" type="password" placeholder="Kinnita parool" id="password2"/>
+    <div class="error" id="diff-pw-error">Paroolid peavad olema ühesugused!</div>
+    <div class="error" id="wrong-pw-error">Parool peab olema vähemalt 8 tähemärki!</div>
+    <div class="error" id="user-exists-error">Selline kasutajanimi on juba kasutusel!</div>
+    <div class="error" id="user-created">Registreerimine õnnestus!</div>
+    <button class="btn btn-success" id="register-btn" onclick="register()">Registreeri</button>
+    <a href="/login">Kasutaja juba olemas? Logi sisse</a>
+</div>
+</body>
+</html>

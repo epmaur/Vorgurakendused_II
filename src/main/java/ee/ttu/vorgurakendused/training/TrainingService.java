@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ee.ttu.vorgurakendused.users.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,8 +19,8 @@ public class TrainingService {
         return trainingRepository.save(training);
     }
 
-    List<Training> getAllTrainings() {
-        return trainingRepository.findAllByOrderByDateDesc();
+    List<Training> getAllTrainings(User user) {
+        return trainingRepository.findByCreatorOrderByDateDesc(user);
     }
 
     public Long deleteTrainingById(long id) {

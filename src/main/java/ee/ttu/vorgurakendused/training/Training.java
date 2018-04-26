@@ -25,9 +25,9 @@ public class Training {
     int pulse;
     String comment;
     @ManyToOne
-    private User creater;
+    private User creator;
 
-    public Training(int id, String type, String date, double distance, double time, int pulse, String comment, User creater) {
+    public Training(int id, String type, String date, double distance, double time, int pulse, String comment, User creator) {
         this.id = id;
         this.type = type;
         this.date = date;
@@ -35,7 +35,7 @@ public class Training {
         this.time = time;
         this.pulse = pulse;
         this.comment = comment;
-        this.creater = creater;
+        this.creator = creator;
     }
 
     public Training() {}
@@ -96,12 +96,12 @@ public class Training {
         this.comment = comment;
     }
 
-    public User getCreater() {
-        return creater;
+    public User getCreator() {
+        return creator;
     }
 
-    public void setCreater(User creater) {
-        this.creater = creater;
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     @Override

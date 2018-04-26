@@ -39,6 +39,7 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-security")
-    compile 'org.springframework.security.oauth:spring-security-oauth2:2.3.3.BUILD-SNAPSHOT'
+    compile('org.springframework.security.oauth:spring-security-oauth2:2.3.3.BUILD-SNAPSHOT')
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
 }

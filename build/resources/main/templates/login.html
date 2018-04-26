@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logi sisse</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://vuejs.org/js/vue.js"></script>
+  <script src="/js/script.js"></script>
+  <script>
+    var app = new Vue({
+        el: '#root',
+        beforeMount() {
+            if (getCookie("access_token")) {
+                document.location.replace("/");
+
+            }
+        }
+    });
+  </script>
+</head>
+<body>
+<div id="root" class="form-group">
+  <h2>Logi sisse</h2>
+  <form id="login-form" v-on:submit.prevent="login">
+    <input v-model="username" class="form-control" type="text" placeholder="Kasutajanimi" id="username"/>
+    <input v-model="password" class="form-control" type="password" placeholder="Parool" id="password"/>
+    <input class="btn btn-success" type="submit" value="Logi sisse"/>
+  </form>
+  <a href="/registration">Registreeri uus kasutaja</a>
+</div>
+<script>
+    var app = new Vue({
+        el: '#login-form',
+        data:{
+            username: '',
+            password: '',
+        },
+        methods: {
+            login(){
+                console.log('login');
+                var params = new URLSearchParams();
+                params.append('grant_type', 'password');
+                params.append('username', this.username);
+                params.append('password',this.password);
+                axios({
+                    method:'post',
+                    url:'oauth/token',
+                    auth:{username:'my-trusted-client',password:'secret'},
+                    headers: {"Content-type": "application/x-www-form-urlencoded; charset=utf-8"},
+                    data:params
+                })
+                .then(function(response){
+                    console.log('response', response);
+                    set_cookie("access_token",response.data.access_token);
+                    document.location.replace("/");
+                })
+                .catch(e => {
+                  console.log("Wrong username or password");
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,11 +1,16 @@
 #login-form {
   width: 100%;
   max-width: 500px;
-  margin: 10% auto;
+  margin: 2% auto;
 }
 
+.form-group {
+  text-align: center;
+
+}
 #login-form .form-control:not(:first-child) {
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #login-btn, #register-btn {
@@ -62,6 +67,6 @@ h3 {
 }
 
 .error {
-  display: none;
+  display:none;
 }
 
